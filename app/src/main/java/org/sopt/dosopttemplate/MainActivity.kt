@@ -11,14 +11,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userid = binding.userId
-        val mainid = intent.getStringExtra("mainId")
-        userid.setText(mainid)
-        val usernk = binding.userNk
-        val mainnk = intent.getStringExtra("mainNk")
-        usernk.setText(mainnk)
-        val userhome = binding.userHome
-        val mainhome = intent.getStringExtra("mainHome")
-        userhome.setText(mainhome)
+        val id = intent.getStringExtra("mainId")
+        val nk = intent.getStringExtra("mainNk")
+        val hm = intent.getStringExtra("mainHm")
+        binding.userId.text = id
+        binding.userNk.text = nk
+        binding.userHome.text = hm
     }
 }
+

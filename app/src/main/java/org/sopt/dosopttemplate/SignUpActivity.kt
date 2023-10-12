@@ -37,13 +37,14 @@ class SignUpActivity : AppCompatActivity() {
                 val passId = binding.etId.text.toString()
                 val passPw = binding.etPw.text.toString()
                 val passNk = binding.etNickname.text.toString()
-                val passHome = binding.etHome.text.toString()
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.putExtra("passId", passId)
-                intent.putExtra("passPw", passPw)
-                intent.putExtra("passNk", passNk)
-                intent.putExtra("passHome", passHome)
-                startActivity(intent)
+                val passHm = binding.etHome.text.toString()
+                val resultIntent = Intent()
+                resultIntent.putExtra("passId", passId)
+                resultIntent.putExtra("passPw", passPw)
+                resultIntent.putExtra("passNk", passNk)
+                resultIntent.putExtra("passHm", passHm)
+                setResult(RESULT_OK, resultIntent)
+                finish()
             }
         }
     }
