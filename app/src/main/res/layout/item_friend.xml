@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/iv_item_friend_img"
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/jordy"

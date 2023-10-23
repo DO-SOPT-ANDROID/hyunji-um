@@ -17,20 +17,33 @@ class HomeFragment : Fragment() {
 
     private val mockFriendList = listOf<PersonInfo>(
         PersonInfo.MyInfo(
-            profileImage = R.drawable.jordy,
-            name = "엄현지",
-            self_description = "안녕안녕",
-        ),
-        PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy,
-            name = "허민회",
-            self_description = "빠이팅",
-        ),
-        PersonInfo.FriendInfo(
-            profileImage = R.drawable.ic_person_white_24,
-            name = "파트장",
-            self_description = "표정 풀자",
+            profileImage = R.drawable.jordy, name = "엄현지", self_description = "나는야 행복한 나무늘보"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.sloth, name = "허민회", self_description = "빠이팅"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_happy, name = "파트장", self_description = "표정 풀자"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_cute, name = "박소현", self_description = "하이~"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.sloth, name = "최준서", self_description = "갓생살자"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_happy, name = "양예진", self_description = "면지 친구"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_cute, name = "최유진", self_description = "면지 친구~"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.sloth, name = "허민회", self_description = "빠이팅"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_happy, name = "파트장", self_description = "표정 풀자"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_cute, name = "박소현", self_description = "하이~"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.sloth, name = "최준서", self_description = "갓생살자"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_happy, name = "양예진", self_description = "면지 친구"
+        ), PersonInfo.FriendInfo(
+            profileImage = R.drawable.jordy_cute, name = "최유진", self_description = "면지 친구~"
         )
+
     )
 
 
