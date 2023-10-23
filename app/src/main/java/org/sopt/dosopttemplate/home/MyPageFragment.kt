@@ -26,9 +26,9 @@ class MyPageFragment : Fragment() {
         val id = requireActivity().intent.getStringExtra("mainId")
         val nk = requireActivity().intent.getStringExtra("mainNk")
         val hm = requireActivity().intent.getStringExtra("mainHm")
-        binding.userId.text = id
-        binding.userNk.text = nk
-        binding.userHome.text = hm
+        binding.tvMypageUserId.text = id
+        binding.tvMypageUserNk.text = nk
+        binding.tvMypageUserHome.text = hm
         // 대부분의 로직은 여기에 구현합니다.
         // 원두를 갈고~
         // 커피를 내리고~

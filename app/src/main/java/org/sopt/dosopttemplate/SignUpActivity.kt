@@ -14,16 +14,16 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonSignupStart.setOnClickListener {
+        binding.btnSignupStart.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setPositiveButton("확인") { dialog, which ->
             }
-            val fixNickname = binding.etNickname.text.filter { !it.isWhitespace() }
-            val fixHome = binding.etHome.text.filter { !it.isWhitespace() }
-            if (binding.etId.length() < 6 || binding.etId.length() > 10) {
+            val fixNickname = binding.etSignupNickname.text.filter { !it.isWhitespace() }
+            val fixHome = binding.etSignupHome.text.filter { !it.isWhitespace() }
+            if (binding.etSignupId.length() < 6 || binding.etSignupId.length() > 10) {
                 builder.setTitle("ID 조건").setMessage("ID는 6~10 글자만 가능합니다.")
                 builder.show()
-            } else if (binding.etPw.length() < 8 || binding.etPw.length() > 12) {
+            } else if (binding.etSignupPw.length() < 8 || binding.etSignupPw.length() > 12) {
                 builder.setTitle("비밀번호 조건").setMessage("비밀번호는 8~12 글자만 가능합니다.")
                 builder.show()
             } else if (fixNickname.isEmpty()) {
@@ -34,10 +34,10 @@ class SignUpActivity : AppCompatActivity() {
                 builder.show()
             } else {
                 Toast.makeText(this, "회원가입에 성공하였습니다.", Toast.LENGTH_SHORT).show()
-                val passId = binding.etId.text.toString()
-                val passPw = binding.etPw.text.toString()
-                val passNk = binding.etNickname.text.toString()
-                val passHm = binding.etHome.text.toString()
+                val passId = binding.etSignupId.text.toString()
+                val passPw = binding.etSignupPw.text.toString()
+                val passNk = binding.etSignupNickname.text.toString()
+                val passHm = binding.etSignupHome.text.toString()
                 val resultIntent = Intent()
                 resultIntent.putExtra("passId", passId)
                 resultIntent.putExtra("passPw", passPw)
