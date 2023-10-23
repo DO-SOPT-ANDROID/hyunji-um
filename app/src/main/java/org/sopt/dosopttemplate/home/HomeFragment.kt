@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.sopt.dosopttemplate.model.Friend
+import org.sopt.dosopttemplate.model.PersonInfo
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.adapter.FriendAdapter
+import org.sopt.dosopttemplate.adapter.PersonInfoAdapter
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -15,22 +15,22 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding
         get() = requireNotNull(_binding) { "바인딩 객체가 생성되지 않았다. 생성하고 불러라 임마!" }
 
-    private val mockFriendList =listOf<Friend>(
-        Friend(
-            profileImage = R.drawable.ic_home_white_24,
+    private val mockFriendList =listOf<PersonInfo>(
+        PersonInfo.MyInfo(
+            profileImage = R.drawable.jordy,
             name = "엄현지",
             self_description = "안녕안녕",
         ),
-        Friend(
+        PersonInfo.FriendInfo(
             profileImage = R.drawable.jordy,
             name = "허민회",
             self_description = "빠이팅",
         ),
-        Friend(
+        PersonInfo.FriendInfo(
             profileImage = R.drawable.ic_person_white_24,
             name = "파트장",
             self_description = "표정 풀자",
-        ),
+        )
     )
 
 
@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val friendAdapter = FriendAdapter(requireContext())
+        val friendAdapter = PersonInfoAdapter(requireContext())
         binding.rvFriends.adapter= friendAdapter
         friendAdapter.setFriendList(mockFriendList)
     }
