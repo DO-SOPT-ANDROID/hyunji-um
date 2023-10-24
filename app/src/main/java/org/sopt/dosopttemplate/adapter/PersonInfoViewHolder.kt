@@ -17,8 +17,7 @@ class FriendViewHolder(private val binding: ItemFriendBinding) :
         if (friendData.music != null) {
             binding.btnItemFriendMusic.text = friendData.music
             binding.btnItemFriendMusic.visibility = View.VISIBLE
-        }
-        else {
+        } else {
             binding.btnItemFriendMusic.visibility = View.INVISIBLE
         }
     }

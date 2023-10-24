@@ -21,27 +21,54 @@ class HomeFragment : Fragment() {
         ), PersonInfo.BirthdayInfo(
             profileImage = R.drawable.sloth, name = "허민회", self_description = "빠이팅"
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_happy, name = "파트장", self_description = "표정 풀자", music = "투게더!-잔나비"
+            profileImage = R.drawable.jordy_happy,
+            name = "파트장",
+            self_description = "표정 풀자",
+            music = "투게더!-잔나비"
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_cute, name = "박소현", self_description = "하이~", music = null
+            profileImage = R.drawable.jordy_cute,
+            name = "박소현",
+            self_description = "하이~",
+            music = null
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.sloth, name = "최준서", self_description = "갓생살자", music = "히어로-LUCY"
+            profileImage = R.drawable.sloth,
+            name = "최준서",
+            self_description = "갓생살자",
+            music = "히어로-LUCY"
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_happy, name = "양예진", self_description = "면지 친구", music = null
+            profileImage = R.drawable.jordy_happy,
+            name = "양예진",
+            self_description = "면지 친구",
+            music = null
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_cute, name = "최유진", self_description = "면지 친구~", music = null
+            profileImage = R.drawable.jordy_cute,
+            name = "최유진",
+            self_description = "면지 친구~",
+            music = null
         ), PersonInfo.FriendInfo(
             profileImage = R.drawable.sloth, name = "허민회", self_description = "빠이팅", music = null
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_happy, name = "파트장", self_description = "표정 풀자", music = null
+            profileImage = R.drawable.jordy_happy,
+            name = "파트장",
+            self_description = "표정 풀자",
+            music = null
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_cute, name = "박소현", self_description = "하이~", music = "등대-하현상"
+            profileImage = R.drawable.jordy_cute,
+            name = "박소현",
+            self_description = "하이~",
+            music = "등대-하현상"
         ), PersonInfo.FriendInfo(
             profileImage = R.drawable.sloth, name = "최준서", self_description = "갓생살자", music = null
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_happy, name = "양예진", self_description = "면지 친구", music = null
+            profileImage = R.drawable.jordy_happy,
+            name = "양예진",
+            self_description = "면지 친구",
+            music = null
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_cute, name = "최유진", self_description = "면지 친구~", music = null
+            profileImage = R.drawable.jordy_cute,
+            name = "최유진",
+            self_description = "면지 친구~",
+            music = null
         )
 
     )
