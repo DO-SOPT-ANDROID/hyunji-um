@@ -4,27 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_item_me_img"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/jordy"
-        app:layout_constraintDimensionRatio="1:1"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item_me_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_item_me_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jordy_cute" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_item_me_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/name"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/iv_item_me_img"
-        app:layout_constraintTop_toTopOf="@id/iv_item_me_img" />
+        app:layout_constraintStart_toEndOf="@id/cv_item_me_img"
+        app:layout_constraintTop_toTopOf="@id/cv_item_me_img" />
 
     <TextView
         android:id="@+id/tv_item_me_description"
@@ -32,7 +42,8 @@
         android:layout_height="wrap_content"
         android:text="@string/hello"
         android:textSize="17sp"
-        app:layout_constraintStart_toEndOf="@id/iv_item_me_img"
+        app:layout_constraintStart_toEndOf="@id/cv_item_me_img"
+        app:layout_constraintStart_toStartOf="@id/tv_item_me_name"
         app:layout_constraintTop_toBottomOf="@id/tv_item_me_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
