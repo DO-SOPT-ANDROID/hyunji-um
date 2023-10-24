@@ -1,5 +1,6 @@
 package org.sopt.dosopttemplate.adapter
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.dosopttemplate.databinding.ItemFriendBinding
 import org.sopt.dosopttemplate.databinding.ItemMeBinding
@@ -12,6 +13,13 @@ class FriendViewHolder(private val binding: ItemFriendBinding) :
         binding.ivItemFriendImg.setImageResource(friendData.profileImage)
         binding.tvItemFriendName.text = friendData.name
         binding.tvItemFriendDescription.text = friendData.self_description
+        if (friendData.music != null) {
+            binding.btnItemFriendMusic.text = friendData.music
+            binding.btnItemFriendMusic.visibility = View.VISIBLE
+        }
+        else {
+            binding.btnItemFriendMusic.visibility = View.INVISIBLE
+        }
     }
 }
 

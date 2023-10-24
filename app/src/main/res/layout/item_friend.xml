@@ -39,4 +39,23 @@
         app:layout_constraintStart_toEndOf="@id/iv_item_friend_img"
         app:layout_constraintTop_toBottomOf="@id/tv_item_friend_name"
         app:layout_constraintStart_toStartOf="@id/tv_item_friend_name"/>
+
+    <android.widget.Button
+        android:id="@+id/btn_item_friend_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/music"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:background="@drawable/button_style"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
