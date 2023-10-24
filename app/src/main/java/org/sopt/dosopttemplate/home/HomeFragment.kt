@@ -18,10 +18,10 @@ class HomeFragment : Fragment() {
     private val mockFriendList = listOf<PersonInfo>(
         PersonInfo.MyInfo(
             profileImage = R.drawable.jordy, name = "엄현지", self_description = "나는야 행복한 나무늘보"
+        ), PersonInfo.BirthdayInfo(
+            profileImage = R.drawable.sloth, name = "허민회", self_description = "빠이팅"
         ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.sloth, name = "허민회", self_description = "빠이팅", music = "투게더!-잔나비"
-        ), PersonInfo.FriendInfo(
-            profileImage = R.drawable.jordy_happy, name = "파트장", self_description = "표정 풀자", music = null
+            profileImage = R.drawable.jordy_happy, name = "파트장", self_description = "표정 풀자", music = "투게더!-잔나비"
         ), PersonInfo.FriendInfo(
             profileImage = R.drawable.jordy_cute, name = "박소현", self_description = "하이~", music = null
         ), PersonInfo.FriendInfo(

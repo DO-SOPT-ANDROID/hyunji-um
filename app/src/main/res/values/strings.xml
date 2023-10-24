@@ -16,4 +16,5 @@
     <string name="login_ok">로그인 하기</string>
     <string name="go_signup">회원가입</string>
     <string name="music">music</string>
+    <string name="present">선물하기</string>
 </resources>

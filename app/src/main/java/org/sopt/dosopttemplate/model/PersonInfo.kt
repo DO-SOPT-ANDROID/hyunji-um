@@ -15,4 +15,10 @@ sealed class PersonInfo {
         val self_description: String,
         val music: String?
     ) : PersonInfo()
+
+    data class BirthdayInfo(
+        @DrawableRes val profileImage: Int,
+        val name: String,
+        val self_description: String
+    ) : PersonInfo()
 }

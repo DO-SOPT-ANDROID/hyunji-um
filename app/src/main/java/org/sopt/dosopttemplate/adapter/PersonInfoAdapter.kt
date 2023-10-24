@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import org.sopt.dosopttemplate.databinding.ItemBirthdayBinding
 import org.sopt.dosopttemplate.databinding.ItemFriendBinding
 import org.sopt.dosopttemplate.databinding.ItemMeBinding
 import org.sopt.dosopttemplate.model.PersonInfo
@@ -12,6 +13,7 @@ class PersonInfoAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vi
     private val inflater by lazy { LayoutInflater.from(context) }
     private val my_info_type = 0
     private val friend_info_type = 1
+    private val birthday_info_type = 2
 
     // 임시의 빈 리스트
     private var friendList: List<PersonInfo> = emptyList()
@@ -23,9 +25,14 @@ class PersonInfoAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vi
                 MyViewHolder(binding)
             }
 
-            else -> {
+            friend_info_type -> {
                 val binding = ItemFriendBinding.inflate(inflater, parent, false)
                 FriendViewHolder(binding)
+            }
+
+            else -> {
+                val binding = ItemBirthdayBinding.inflate(inflater, parent, false)
+                BirthdayViewHolder(binding)
             }
         }
     }
@@ -41,6 +48,11 @@ class PersonInfoAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vi
                 val friendInfo = friendList[position]
                 holder.onBind(friendInfo as PersonInfo.FriendInfo)
             }
+
+            is BirthdayViewHolder -> {
+                val birthdayInfo = friendList[position]
+                holder.onBind(birthdayInfo as PersonInfo.BirthdayInfo)
+            }
         }
     }
 
@@ -48,6 +60,7 @@ class PersonInfoAdapter(context: Context) : RecyclerView.Adapter<RecyclerView.Vi
         return when (friendList[position]) {
             is PersonInfo.MyInfo -> my_info_type
             is PersonInfo.FriendInfo -> friend_info_type
+            is PersonInfo.BirthdayInfo -> birthday_info_type
         }
     }
 
