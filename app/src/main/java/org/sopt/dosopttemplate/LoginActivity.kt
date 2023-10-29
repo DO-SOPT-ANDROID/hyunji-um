@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
+import org.sopt.dosopttemplate.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -33,17 +34,17 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-        binding.buttonSignup.setOnClickListener {
+        binding.btnLoginSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             getStringResult.launch(intent)
         }
 
-        binding.buttonLogin.setOnClickListener {
-            if (binding.editTextId.text.toString() == id) {
-                if (binding.editTextPass.text.toString() == pw) {
+        binding.btnLoginStart.setOnClickListener {
+            if (binding.etLoginId.text.toString() == id) {
+                if (binding.etLoginPw.text.toString() == pw) {
                     Toast.makeText(this, "로그인에 성공했습니다", Toast.LENGTH_SHORT).show()
-                    val resultIntent = Intent(this, MainActivity::class.java)
-                    resultIntent.putExtra("mainId", binding.editTextId.text.toString())
+                    val resultIntent = Intent(this, HomeActivity::class.java)
+                    resultIntent.putExtra("mainId", binding.etLoginId.text.toString())
                     resultIntent.putExtra("mainNk", nk)
                     resultIntent.putExtra("mainHm", hm)
                     startActivity(resultIntent)
