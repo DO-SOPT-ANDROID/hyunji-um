@@ -50,11 +50,15 @@ class LoginActivity : AppCompatActivity() {
                     resultIntent.putExtra("userInfo", userInfo)
                     startActivity(resultIntent)
                 } else {
+                    binding.etLoginId.error = null
+                    binding.etLoginPw.error = getString(R.string.wrong)
                     Snackbar.make(
                         binding.root, "비밀번호가 잘못되었습니다.", Snackbar.LENGTH_SHORT
                     ).show()
                 }
             } else {
+                binding.etLoginId.error = getString(R.string.wrong)
+                binding.etLoginPw.error = null
                 Snackbar.make(
                     binding.root, "아이디가 잘못되었습니다.", Snackbar.LENGTH_SHORT
                 ).show()
