@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
+import org.sopt.dosopttemplate.model.UserInfo
 
 class MyPageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
@@ -23,9 +24,15 @@ class MyPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = requireActivity().intent.getStringExtra("mainId")
-        val nk = requireActivity().intent.getStringExtra("mainNk")
-        val hm = requireActivity().intent.getStringExtra("mainHm")
+
+        //val receivedUserInfo = arguments?.getSerializable("userInfo") as? UserInfo
+        val receivedUserInfo = activity?.intent?.getSerializableExtra("userInfo") as? UserInfo ?: return
+
+        val id = receivedUserInfo.id
+        val pw = receivedUserInfo.pw
+        val nk = receivedUserInfo.nk
+        val hm = receivedUserInfo.hm
+
         binding.tvMypageUserId.text = id
         binding.tvMypageUserNk.text = nk
         binding.tvMypageUserHome.text = hm
