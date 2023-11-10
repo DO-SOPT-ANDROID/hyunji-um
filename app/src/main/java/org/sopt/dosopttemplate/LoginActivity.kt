@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLoginStart.setOnClickListener {
             if (binding.etLoginIdText.text.toString() == userInfo.id) {
-                if (binding.etLoginPw.text.toString() == userInfo.pw) {
+                if (binding.etLoginPwText.text.toString() == userInfo.pw) {
                     Toast.makeText(this, "로그인에 성공했습니다", Toast.LENGTH_SHORT).show()
                     val resultIntent = Intent(this, HomeActivity::class.java)
                     resultIntent.putExtra("userInfo", userInfo)
