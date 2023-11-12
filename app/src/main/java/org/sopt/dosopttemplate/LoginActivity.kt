@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.home.HomeActivity
+import org.sopt.dosopttemplate.model.UserInfo
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -27,10 +28,12 @@ class LoginActivity : AppCompatActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
                     val data = result.data
-                    id = data?.getStringExtra("passId") ?: ""
-                    pw = data?.getStringExtra("passPw") ?: ""
-                    nk = data?.getStringExtra("passNk") ?: ""
-                    hm = data?.getStringExtra("passHm") ?: ""
+                    userInfo = UserInfo(
+                        id = data?.getStringExtra("passId").orEmpty(),
+                        pw = data?.getStringExtra("passPw").orEmpty(),
+                        nk = data?.getStringExtra("passNk").orEmpty(),
+                        hm = data?.getStringExtra("passHm").orEmpty()
+                    )
                 }
             }
 
@@ -40,20 +43,22 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLoginStart.setOnClickListener {
-            if (binding.etLoginId.text.toString() == id) {
-                if (binding.etLoginPw.text.toString() == pw) {
+            if (binding.etLoginIdText.text.toString() == userInfo.id) {
+                if (binding.etLoginPwText.text.toString() == userInfo.pw) {
                     Toast.makeText(this, "로그인에 성공했습니다", Toast.LENGTH_SHORT).show()
                     val resultIntent = Intent(this, HomeActivity::class.java)
-                    resultIntent.putExtra("mainId", binding.etLoginId.text.toString())
-                    resultIntent.putExtra("mainNk", nk)
-                    resultIntent.putExtra("mainHm", hm)
+                    resultIntent.putExtra("userInfo", userInfo)
                     startActivity(resultIntent)
                 } else {
+                    binding.etLoginId.error = null
+                    binding.etLoginPw.error = getString(R.string.wrong)
                     Snackbar.make(
                         binding.root, "비밀번호가 잘못되었습니다.", Snackbar.LENGTH_SHORT
                     ).show()
                 }
             } else {
+                binding.etLoginId.error = getString(R.string.wrong)
+                binding.etLoginPw.error = null
                 Snackbar.make(
                     binding.root, "아이디가 잘못되었습니다.", Snackbar.LENGTH_SHORT
                 ).show()

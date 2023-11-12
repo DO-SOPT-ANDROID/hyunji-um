@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/welcome_to_sopt"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,43 +24,61 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="60dp"
         android:text="@string/id"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_login_welcome" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_login_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:hint="@string/write_id"
-        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_id" />
+        app:layout_constraintTop_toBottomOf="@id/tv_login_id">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_login_id_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/write_id"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tv_login_pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="23dp"
         android:text="@string/pw"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_login_id" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/et_login_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
-        android:hint="@string/write_pw"
-        android:inputType="textPassword"
-        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_login_pw" />
+        app:layout_constraintTop_toBottomOf="@id/tv_login_pw">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_login_pw_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/write_pw"
+            android:inputType="textPassword"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_login_start"
