@@ -3,7 +3,9 @@ package org.sopt.dosopttemplate.home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import org.sopt.dosopttemplate.Dto.ResponseDto.ResponseFollowerDto
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.ServicePool
 import org.sopt.dosopttemplate.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -19,7 +21,6 @@ class HomeActivity : AppCompatActivity() {
                 .add(R.id.fcv_home, HomeFragment())       // 흠...
                 .commit()
         }
-
         clickBottomNavigation()
     }
 
@@ -52,3 +53,4 @@ class HomeActivity : AppCompatActivity() {
             .commit()
     }
 }
+

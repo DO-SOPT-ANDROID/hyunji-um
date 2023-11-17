@@ -9,11 +9,11 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.dosopttemplate.api.AuthLogin
 import org.sopt.dosopttemplate.api.AuthSignUp
+import org.sopt.dosopttemplate.api.ReqresService
 import retrofit2.Retrofit
 
 object ApiFactory {
     private const val BASE_URL = BuildConfig.AUTH_BASE_URL
-
 
 
     private fun getLogOkHttpClient(): Interceptor {
@@ -39,7 +39,21 @@ object ApiFactory {
     inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
 }
 
+object ApiFactory2 {
+    private const val BASE_URL2 = "https://reqres.in/"
+
+    val retrofit: Retrofit by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL2)
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .build()
+    }
+
+    inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
+}
+
 object ServicePool {
     val authServiceLogin = ApiFactory.create<AuthLogin>()
     val authServiceSignup = ApiFactory.create<AuthSignUp>()
+    val reqresService = ApiFactory2.create<ReqresService>()
 }

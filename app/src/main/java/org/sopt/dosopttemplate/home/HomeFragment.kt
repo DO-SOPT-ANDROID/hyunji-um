@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import org.sopt.dosopttemplate.Dto.ResponseDto.ResponseFollowerDto
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.adapter.PersonInfoAdapter
+import org.sopt.dosopttemplate.ServicePool
+import org.sopt.dosopttemplate.adapter.FollowerAdapter
 import org.sopt.dosopttemplate.databinding.FragmentHomeBinding
 import org.sopt.dosopttemplate.model.PersonInfo
+import retrofit2.Call
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -88,13 +92,33 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val friendAdapter = PersonInfoAdapter(requireContext())
-        binding.rvHomeFriends.adapter = friendAdapter
-        friendAdapter.setFriendList(mockFriendList)
+        getUser()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    private fun getUser() {
+        ServicePool.reqresService.follower()
+            .enqueue(object : retrofit2.Callback<ResponseFollowerDto> {
+                override fun onResponse(
+                    call: Call<ResponseFollowerDto>,
+                    response: Response<ResponseFollowerDto>,
+                ) {
+                    if (response.isSuccessful) {
+                        val followerAdapter = FollowerAdapter(requireContext())
+                        binding.rvHomeFriends.adapter = followerAdapter
+                        followerAdapter.setFriendList(response.body()!!.data)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseFollowerDto>, t: Throwable) {
+
+                }
+
+            })
     }
 }
