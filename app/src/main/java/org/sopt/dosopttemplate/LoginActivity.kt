@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import org.sopt.dosopttemplate.Dto.RequestDto.RequestLoginDto
 import org.sopt.dosopttemplate.Dto.ResponseDto.ResponseLoginDto
@@ -47,36 +48,18 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login()
-
-        /*        binding.btnLoginStart.setOnClickListener {
-                    if (binding.etLoginIdText.text.toString() == userInfo.id) {
-                        if (binding.etLoginPwText.text.toString() == userInfo.pw) {
-                            Toast.makeText(this, "로그인에 성공했습니다", Toast.LENGTH_SHORT).show()
-                            val resultIntent = Intent(this, HomeActivity::class.java)
-                            resultIntent.putExtra("userInfo", userInfo)
-                            startActivity(resultIntent)
-                        } else {
-                            binding.etLoginId.error = null
-                            binding.etLoginPw.error = getString(R.string.wrong)
-                            Snackbar.make(
-                                binding.root, "비밀번호가 잘못되었습니다.", Snackbar.LENGTH_SHORT
-                            ).show()
-                        }
-                    } else {
-                        binding.etLoginId.error = getString(R.string.wrong)
-                        binding.etLoginPw.error = null
-                        Snackbar.make(
-                            binding.root, "아이디가 잘못되었습니다.", Snackbar.LENGTH_SHORT
-                        ).show()
-                    }
-                }*/
     }
 
     private fun login() {
         binding.btnLoginStart.setOnClickListener {
             val id = binding.etLoginIdText.text.toString()
             val password = binding.etLoginPwText.text.toString()
-            authServiceLogin.login(RequestLoginDto(id, password))
+
+            authViewModel.login(
+                id = id,
+                password = password
+            )
+/*            authServiceLogin.login(RequestLoginDto(id, password))
                 .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
                     override fun onResponse(
                         call: Call<ResponseLoginDto>,
@@ -99,8 +82,25 @@ class LoginActivity : AppCompatActivity() {
                     override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
                         Toast.makeText(this@LoginActivity, "서버 에러 발생", Toast.LENGTH_SHORT).show()
                     }
-                })
+                })*/
         }
+    }
+
+    private fun observerLoginResult() {
+        authViewModel.loginSuccess.observe(this) {
+            if (it) {
+                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+                startActivity(
+                    Intent(
+                        this,
+                        HomeActivity::class.java
+                    )
+                )
+            } else {
+                Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 }
 
