@@ -7,14 +7,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import org.sopt.dosopttemplate.Dto.RequestDto.RequestLoginDto
-import org.sopt.dosopttemplate.Dto.ResponseDto.ResponseLoginDto
-import org.sopt.dosopttemplate.ServicePool.authServiceLogin
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.home.HomeActivity
 import org.sopt.dosopttemplate.model.UserInfo
-import retrofit2.Call
-import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -28,6 +23,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.lifecycleOwner = this
+        binding.authViewModel = authViewModel
 
         getStringResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -59,30 +57,31 @@ class LoginActivity : AppCompatActivity() {
                 id = id,
                 password = password
             )
-/*            authServiceLogin.login(RequestLoginDto(id, password))
-                .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
-                    override fun onResponse(
-                        call: Call<ResponseLoginDto>,
-                        response: Response<ResponseLoginDto>,
-                    ) {
-                        if (response.isSuccessful) {
-                            val data: ResponseLoginDto = response.body()!!
-                            val userId = data.id
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "로그인이 성공하였고 유저의 ID는 $userId 입니둥",
-                                Toast.LENGTH_SHORT,
-                            ).show()
+            observerLoginResult()
+            /*            authServiceLogin.login(RequestLoginDto(id, password))
+                            .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
+                                override fun onResponse(
+                                    call: Call<ResponseLoginDto>,
+                                    response: Response<ResponseLoginDto>,
+                                ) {
+                                    if (response.isSuccessful) {
+                                        val data: ResponseLoginDto = response.body()!!
+                                        val userId = data.id
+                                        Toast.makeText(
+                                            this@LoginActivity,
+                                            "로그인이 성공하였고 유저의 ID는 $userId 입니둥",
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
 
-                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                            startActivity(intent)
-                        }
-                    }
+                                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                                        startActivity(intent)
+                                    }
+                                }
 
-                    override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
-                        Toast.makeText(this@LoginActivity, "서버 에러 발생", Toast.LENGTH_SHORT).show()
-                    }
-                })*/
+                                override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
+                                    Toast.makeText(this@LoginActivity, "서버 에러 발생", Toast.LENGTH_SHORT).show()
+                                }
+                            })*/
         }
     }
 
