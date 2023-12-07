@@ -11,4 +11,6 @@ data class RequestSignUpDto(
     val password: String,
     @SerialName("nickname")
     val nickname: String,
+    @SerialName("home")
+    val home: String,
 )

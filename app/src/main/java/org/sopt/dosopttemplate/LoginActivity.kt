@@ -58,30 +58,6 @@ class LoginActivity : AppCompatActivity() {
                 password = password
             )
             observerLoginResult()
-            /*            authServiceLogin.login(RequestLoginDto(id, password))
-                            .enqueue(object : retrofit2.Callback<ResponseLoginDto> {
-                                override fun onResponse(
-                                    call: Call<ResponseLoginDto>,
-                                    response: Response<ResponseLoginDto>,
-                                ) {
-                                    if (response.isSuccessful) {
-                                        val data: ResponseLoginDto = response.body()!!
-                                        val userId = data.id
-                                        Toast.makeText(
-                                            this@LoginActivity,
-                                            "로그인이 성공하였고 유저의 ID는 $userId 입니둥",
-                                            Toast.LENGTH_SHORT,
-                                        ).show()
-
-                                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                                        startActivity(intent)
-                                    }
-                                }
-
-                                override fun onFailure(call: Call<ResponseLoginDto>, t: Throwable) {
-                                    Toast.makeText(this@LoginActivity, "서버 에러 발생", Toast.LENGTH_SHORT).show()
-                                }
-                            })*/
         }
     }
 
