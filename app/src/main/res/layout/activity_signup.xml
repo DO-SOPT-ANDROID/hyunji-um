@@ -81,8 +81,8 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="3dp"
                 app:endIconMode="clear_text"
-                app:errorEnabled="true"
                 app:error="@{authViewModel.isMatchPw.second}"
+                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_signup_pw">
@@ -169,12 +169,13 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
+                android:enabled="@{authViewModel.isButtonEnabled}"
                 android:text="@string/signup_ok"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_signup_home" />
+                app:layout_constraintTop_toBottomOf="@+id/et_signup_home"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
