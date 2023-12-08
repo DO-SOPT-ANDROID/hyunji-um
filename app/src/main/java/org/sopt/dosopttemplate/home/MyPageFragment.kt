@@ -1,5 +1,6 @@
 package org.sopt.dosopttemplate.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,11 +23,14 @@ class MyPageFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //val receivedUserInfo = arguments?.getSerializable("userInfo") as? UserInfo
-        val receivedUserInfo = activity?.intent?.getSerializableExtra("userInfo") as? UserInfo ?: return
+        val receivedUserInfo =
+            activity?.intent?.getSerializableExtra("userInfo", UserInfo::class.java) as? UserInfo
+                ?: return
 
         val id = receivedUserInfo.id
         val pw = receivedUserInfo.pw
@@ -36,9 +40,6 @@ class MyPageFragment : Fragment() {
         binding.tvMypageUserId.text = id
         binding.tvMypageUserNk.text = nk
         binding.tvMypageUserHome.text = hm
-        // 대부분의 로직은 여기에 구현합니다.
-        // 원두를 갈고~
-        // 커피를 내리고~
     }
 
     override fun onDestroyView() {
