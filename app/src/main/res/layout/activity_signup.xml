@@ -48,7 +48,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="3dp"
                 app:endIconMode="clear_text"
-                app:error="@{authViewModel.isMatchId.second}"
+                app:error="@{authViewModel.idValidationResult.second}"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="3dp"
                 app:endIconMode="clear_text"
-                app:error="@{authViewModel.isMatchPw.second}"
+                app:error="@{authViewModel.pwValidationResult.second}"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="3dp"
                 app:endIconMode="clear_text"
-                app:error="@{authViewModel.isMatchNk.second}"
+                app:error="@{authViewModel.nkValidationResult.second}"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +147,7 @@
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="3dp"
                 app:endIconMode="clear_text"
-                app:error="@{authViewModel.isMatchHm.second}"
+                app:error="@{authViewModel.hmValidationResult.second}"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,7 +175,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_signup_home"/>
+                app:layout_constraintTop_toBottomOf="@+id/et_signup_home" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun observerSignUpResult() {
-        authViewModel.signupSuccess.observe(this) {isSuccess ->
+        authViewModel.signupSuccess.observe(this) { isSuccess ->
             if (isSuccess) {
                 Toast.makeText(this@SignUpActivity, "회원가입 성공", Toast.LENGTH_SHORT).show()
 
