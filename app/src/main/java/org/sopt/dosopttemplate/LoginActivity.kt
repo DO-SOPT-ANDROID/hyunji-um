@@ -7,6 +7,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.databinding.ActivityLoginBinding
 import org.sopt.dosopttemplate.home.HomeActivity
 import org.sopt.dosopttemplate.model.UserInfo
@@ -62,17 +64,22 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun observerLoginResult() {
-        authViewModel.loginSuccess.observe(this) {
-            if (it) {
-                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                startActivity(
-                    Intent(
-                        this,
-                        HomeActivity::class.java
-                    ).putExtra("userInfo", userInfo)
-                )
-            } else {
-                Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            authViewModel.loginState.collect { loginState ->
+                when (loginState) {
+                    is LoginState.Success -> {
+                        Toast.makeText(this@LoginActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                    }
+
+                    is LoginState.Error -> {
+                        Toast.makeText(this@LoginActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                    }
+
+                    is LoginState.Loading -> {
+                        Toast.makeText(this@LoginActivity, "로그인 중", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
 

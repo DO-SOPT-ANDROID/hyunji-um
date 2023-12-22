@@ -6,6 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.Dto.RequestDto.RequestLoginDto
 import org.sopt.dosopttemplate.Dto.RequestDto.RequestSignUpDto
@@ -15,6 +18,9 @@ import org.sopt.dosopttemplate.ServicePool.authServiceSignup
 import java.util.regex.Pattern
 
 class AuthViewModel : ViewModel() {
+
+    private val _loginState = MutableStateFlow<LoginState>(LoginState.Loading)
+    val loginState: StateFlow<LoginState> = _loginState.asStateFlow()
 
     private val loginResult: MutableLiveData<ResponseLoginDto> = MutableLiveData()
 
@@ -73,14 +79,9 @@ class AuthViewModel : ViewModel() {
             kotlin.runCatching {
                 authServiceLogin.login(RequestLoginDto(id, password))
             }.onSuccess {
-                if (it.isSuccessful) {
-                    loginResult.value = it.body()
-                    loginSuccess.value = true
-                } else {
-                    loginSuccess.value = false
-                }
+                _loginState.value = LoginState.Success(it.body()!!)
             }.onFailure {
-                loginSuccess.value = false
+                _loginState.value = LoginState.Error
             }
         }
     }
