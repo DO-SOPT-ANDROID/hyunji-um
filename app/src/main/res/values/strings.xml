@@ -17,8 +17,8 @@
     <string name="go_signup">회원가입</string>
     <string name="music">music</string>
     <string name="present">선물하기</string>
-    <string name="_8_12">8~12 글자</string>
-    <string name="_6_10">6~10 글자</string>
+    <string name="_8_12">영문,숫자,특수문자 포함 6~12 글자</string>
+    <string name="_6_10">영문,숫자 포함 6~10 글자</string>
     <string name="_1_">한 글자 이상</string>
     <string name="wrong">다시 입력해주세요</string>
 </resources>
