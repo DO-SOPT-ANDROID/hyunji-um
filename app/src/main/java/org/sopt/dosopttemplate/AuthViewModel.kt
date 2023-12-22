@@ -79,7 +79,12 @@ class AuthViewModel : ViewModel() {
             kotlin.runCatching {
                 authServiceLogin.login(RequestLoginDto(id, password))
             }.onSuccess {
-                _loginState.value = LoginState.Success(it.body()!!)
+                    response ->
+                if (response != null && response.isSuccessful) {
+                    _loginState.value = LoginState.Success(response.body()!!)
+                } else {
+                    _loginState.value = LoginState.Error
+                }
             }.onFailure {
                 _loginState.value = LoginState.Error
             }
