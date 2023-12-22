@@ -18,7 +18,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var pw: String
     private lateinit var nk: String
     private lateinit var hm: String
-
+    private val authViewModel: AuthViewModel by viewModels()
+    private var userInfo: UserInfo? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -39,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
                     )
                 }
             }
-
         binding.btnLoginSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             getStringResult.launch(intent)
@@ -78,5 +78,3 @@ class LoginActivity : AppCompatActivity() {
 
     }
 }
-
-

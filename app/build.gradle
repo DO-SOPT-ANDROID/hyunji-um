@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.20'
+    id("kotlin-parcelize")
 }
 
 Properties properties = new Properties()
@@ -10,7 +11,6 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 android {
     namespace 'org.sopt.dosopttemplate'
     compileSdk 33
-
     defaultConfig {
         applicationId "org.sopt.dosopttemplate"
         minSdk 28
@@ -45,7 +45,6 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'

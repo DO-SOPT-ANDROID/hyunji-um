@@ -1,6 +1,5 @@
 package org.sopt.dosopttemplate.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.sopt.dosopttemplate.databinding.FragmentMypageBinding
 import org.sopt.dosopttemplate.model.UserInfo
+import org.sopt.dosopttemplate.util.parcelable
 
 class MyPageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
@@ -23,19 +23,16 @@ class MyPageFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("NewApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //val receivedUserInfo = arguments?.getSerializable("userInfo") as? UserInfo
-        val receivedUserInfo =
-            activity?.intent?.getSerializableExtra("userInfo", UserInfo::class.java) as? UserInfo
-                ?: return
+        val receivedUserInfo = activity?.intent?.extras?.parcelable<UserInfo>("userInfo")
 
-        val id = receivedUserInfo.id
-        val pw = receivedUserInfo.pw
-        val nk = receivedUserInfo.nk
-        val hm = receivedUserInfo.hm
+        val id = receivedUserInfo?.id
+        val pw = receivedUserInfo?.pw
+        val nk = receivedUserInfo?.nk
+        val hm = receivedUserInfo?.hm
 
         binding.tvMypageUserId.text = id
         binding.tvMypageUserNk.text = nk
